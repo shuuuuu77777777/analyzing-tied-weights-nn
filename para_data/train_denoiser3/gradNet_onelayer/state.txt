@@ -1,0 +1,6 @@
+    net_name: gradNet_onelayer
+    noise_lev: 0.1
+    crop_size: 28
+    gray: gray
+    num : 36
+    

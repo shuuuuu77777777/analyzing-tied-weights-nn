@@ -1,0 +1,13 @@
+net_name: gradNet_onelayer
+noise_lev: 0.1
+crop_size: 256
+gray: gray
+epoch_size: 400
+batch_size: 10
+learning_rate: 0.0005
+weight_decay: 5e-07
+patience: 5
+10_time: 0.4min
+20_time: 0.6min
+30_time: 0.8min
+train_time: 1.0 min

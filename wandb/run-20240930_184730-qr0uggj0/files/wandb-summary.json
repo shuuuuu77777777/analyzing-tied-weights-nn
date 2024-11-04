@@ -1,0 +1,1 @@
+{"train loss": 0.005491, "epoch": 101, "train_noiselev": 0.1, "_timestamp": 1727689793.8455162, "_runtime": 143.4735312461853, "_step": 2120, "learning rate": 7.8125e-06, "val_score": 0.5643, "noise_score": 0.9382314085960388, "_wandb": {"runtime": 142}}

@@ -1,0 +1,34 @@
+5 relu
+6 softshrink
+7 softplus
+
+
+
+num | firmly nonexpansive or not | name      |whether it works     | path 
+8      ok                          ELU        なんかうまくいった(笑)   C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\8_gradNet_onelayer_noise=0.1_tie_epoch_280.pth
+9　    x not diff                 hardshrink       うーん             C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\9_gradNet_onelayer_noise=0.1_tie_epoch_80.pth
+10     ok                         Hardsignoid       x                 C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\10_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
+11     ok                         Hard tanh      ０                    C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\11_gradNet_onelayer_noise=0.1_tie_epoch_360.pth
+12      ?                         Hardswish()                         C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\12_gradNet_onelayer_noise=0.1_tie_epoch_110.pth
+13     ok                         LeakyReLU                           C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\13_gradNet_onelayer_noise=0.1_tie_epoch_330.pth
+14     ?                          logsigmoid                          C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\14_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
+15     ok                         Prelu                               C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\15_gradNet_onelayer_noise=0.1_tie_epoch_200.pth
+16     ok                         relu                                C:\\Users\\toxic\\Desktop\\WGW\\aa\\para_debug\\train_denoiser3\\gradNet_onelayer\\16_gradNet_onelayer_noise=0.1_tie_epoch_360.pth
+17     ok                         relu6                               C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\17_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
+18     ok                         RReLU                               C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\18_gradNet_onelayer_noise=0.1_tie_epoch_240.pth
+19     x  not-nonexpansive        sel                                 C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\19_gradNet_onelayer_noise=0.1_tie_epoch_100.pth
+20     ok                         celu                                C:\\Users\\toxic\\Desktop\\WGW\\aa\para_debug\\train_denoiser3\\gradNet_onelayer\\20_gradNet_onelayer_noise=0.1_tie_epoch_320.pth
+21     x  not-nonexpansive        gelu                                C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\21_gradNet_onelayer_noise=0.1_tie_epoch_290.pth
+22     ok                         sigmoid                             C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\22_gradNet_onelayer_noise=0.1_tie_epoch_40.pth
+23      ?                         silu                                C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\23_gradNet_onelayer_noise=0.1_tie_epoch_70.pth
+24     x                          mish                                C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\24_gradNet_onelayer_noise=0.1_tie_epoch_60.pth
+25    ok                          softplus                            C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\25_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
+26    ok                          softshrink                          C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\26_gradNet_onelayer_noise=0.1_tie_epoch_40.pth
+27    ok                          softsign                            C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\27_gradNet_onelayer_noise=0.1_tie_epoch_110.pth
+28    ok                          tanh                               C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\28_gradNet_onelayer_noise=0.1_tie_epoch_100.pth
+29    ok                         tanhshrink       1                   C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\29_gradNet_onelayer_noise=0.1_tie_epoch_50.pth
+30    ?                          softmin         x                   C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\30_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
+31    ok                          softmax          x                   C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\31_gradNet_onelayer_noise=0.1_tie_epoch_160.pth
+32        ?                       logsoftmax       x                  C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\33_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
+
+36                                hardtanh

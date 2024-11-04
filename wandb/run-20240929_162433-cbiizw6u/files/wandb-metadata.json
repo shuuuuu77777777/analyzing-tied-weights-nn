@@ -1,0 +1,47 @@
+{
+    "os": "Windows-10-10.0.22631-SP0",
+    "python": "3.9.19",
+    "heartbeatAt": "2024-09-29T07:24:34.060272",
+    "startedAt": "2024-09-29T07:24:33.467717",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "c:\\Users\\toxic\\Desktop\\WGW\\aa\\train_denoiser3.py",
+    "codePathLocal": "train_denoiser3.py",
+    "codePath": "train_denoiser3.py",
+    "host": "LAPTOP-L7KMO8JG",
+    "username": "toxic",
+    "executable": "C:\\Users\\toxic\\anaconda3\\python.exe",
+    "cpu_count": 8,
+    "cpu_count_logical": 16,
+    "cpu_freq": {
+        "current": 3201.0,
+        "min": 0.0,
+        "max": 3201.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3201.0,
+            "min": 0.0,
+            "max": 3201.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 453.7112464904785,
+            "used": 387.64953994750977
+        }
+    },
+    "gpu": "NVIDIA GeForce GTX 1650",
+    "gpu_count": 1,
+    "gpu_devices": [
+        {
+            "name": "NVIDIA GeForce GTX 1650",
+            "memory_total": 4294967296
+        }
+    ],
+    "memory": {
+        "total": 15.405460357666016
+    }
+}
