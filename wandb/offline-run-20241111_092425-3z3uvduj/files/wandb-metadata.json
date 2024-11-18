@@ -1,0 +1,42 @@
+{
+  "os": "Linux-6.8.0-48-generic-x86_64-with-glibc2.35",
+  "python": "3.10.12",
+  "startedAt": "2024-11-11T00:24:25.558191Z",
+  "program": "/home/daito/analyzing-tied-weights-nn/train_denoiser3.py",
+  "codePath": "train_denoiser3.py",
+  "git": {
+    "remote": "https://github.com/shuuuuu77777777/analyzing-tied-weights-nn.git",
+    "commit": "0ea02a8ec9a7e943c5502e94192ee464028b4f31"
+  },
+  "root": "/home/daito/analyzing-tied-weights-nn",
+  "host": "ykw-pro-server",
+  "username": "daito",
+  "executable": "/usr/bin/python3",
+  "codePathLocal": "train_denoiser3.py",
+  "cpu_count": 20,
+  "cpu_count_logical": 40,
+  "gpu": "NVIDIA A30",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1888557256704",
+      "used": "406546759680"
+    }
+  },
+  "memory": {
+    "total": "134356267008"
+  },
+  "cpu": {
+    "count": 20,
+    "countLogical": 40
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA A30",
+      "memoryTotal": "25769803776",
+      "cudaCores": 3584,
+      "architecture": "Ampere"
+    }
+  ],
+  "cudaVersion": "12.4"
+}

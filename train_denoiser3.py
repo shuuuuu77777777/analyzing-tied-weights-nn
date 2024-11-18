@@ -75,8 +75,8 @@ def get_para(net_name, weight_tie, special_list):
 
     net_name = net_name
     kernel_name = kname
-    #crop_size = 256
-    crop_size = 28
+    crop_size = 64
+    #crop_size = 28
 
     noise_lev = 0.1
 
@@ -99,23 +99,23 @@ def get_para(net_name, weight_tie, special_list):
 
     print(device.type)
     model.to(device=device)
-    # if use_google_colab:
-    #     train_path = "/content/BSDS300/images/train"
-    #     # train_path = "../Flickr2K"
-    #     test_path = "/content/BSDS300/images/test"
-    # else:
-    #     train_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\BSDS300\\images\\train"
-    #     # train_path = "../Flickr2K"
-    #     test_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\BSDS300\\images\\test"
-
     if use_google_colab:
         train_path = "/content/BSDS300/images/train"
         # train_path = "../Flickr2K"
         test_path = "/content/BSDS300/images/test"
     else:
-        train_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\MNIST Dataset JPG format\\MNIST - JPG - training\\0"
+        train_path = "/home/daito/analyzing-tied-weights-nn/BSDS300/images/train"
         # train_path = "../Flickr2K"
-        test_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\MNIST Dataset JPG format\\MNIST - JPG - testing\\0"
+        test_path = "/home/daito/analyzing-tied-weights-nn/BSDS300/images/test"
+
+    # if use_google_colab:
+    #     train_path = "/content/BSDS300/images/train"
+    #     # train_path = "../Flickr2K"
+    #     test_path = "/content/BSDS300/images/test"
+    # else:
+    #     train_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\MNIST Dataset JPG format\\MNIST - JPG - training\\0"
+    #     # train_path = "../Flickr2K"
+    #     test_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\MNIST Dataset JPG format\\MNIST - JPG - testing\\0"
 
     epoch_size = 400
     batch_size: int = 10

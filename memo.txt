@@ -32,3 +32,5 @@ num | firmly nonexpansive or not | name      |whether it works     | path
 32        ?                       logsoftmax       x                  C:\Users\toxic\Desktop\WGW\aa\para_debug\train_denoiser3\gradNet_onelayer\33_gradNet_onelayer_noise=0.1_tie_epoch_30.pth
 
 36                                hardtanh
+
+38  relu 64*64 BSDS noise_0.1

@@ -62,13 +62,13 @@ class PnP_Net(nn.Module):
     def forward_denoiser(self, x):
         return self.denoiser(x)
 
-    # def forward(self, x, y):
-    #     #return self.denoiser(x-self.grad(x, y))
-    #     return self.denoiser(x-(x-y))
+    def forward(self, x, y):
+        #return self.denoiser(x-self.grad(x, y))
+        return self.denoiser(x-(x-y))
     
-    def forward(self, x, y,sigma):
-        #return self.denoiser(x-1.5*self.grad(x, y))
-        return self.denoiser(x-sigma*(x-y))
+    # def forward(self, x, y,sigma):
+    #     #return self.denoiser(x-1.5*self.grad(x, y))
+    #     return self.denoiser(x-sigma*(x-y))
 
     def forward_primal_dual(self, x, u, y):
         u_kari = u+self.sigma*x

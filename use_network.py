@@ -56,17 +56,17 @@ kernel = "noise_only"
 weight_tie = True
 
 #########BSDS
-#crop_size = 256
-test_path = "C:\\Users\\toxic\Desktop\\WGW\\aa\\BSDS300\\images\\test"
+crop_size = 64
+test_path = "/home/daito/analyzing-tied-weights-nn/BSDS300/images/test"
 
 
-######MNIST
-crop_size = 28
-test_path = "C:\\Users\\toxic\\Desktop\\WGW\\aa\\MNIST Dataset JPG format\\MNIST - JPG - testing\\0"
+# ######MNIST
+# crop_size = 28
+# test_path = "/home/daito/analyzing-tied-weights-nn/MNIST Dataset JPG format/MNIST - JPG - testing/0"
 
 
 
-checkpoint_path ="C:\\Users\\toxic\\Desktop\\WGW\\aa\\para_debug\\train_denoiser3\\gradNet_onelayer\\36_gradNet_onelayer_noise=0.1_tie_epoch_40.pth"
+checkpoint_path ="/home/daito/analyzing-tied-weights-nn/para_debug/train_denoiser3/gradNet_onelayer/38_gradNet_onelayer_noise=0.1_tie_epoch_160.pth"
 
 
 
@@ -130,15 +130,15 @@ test_dataloader = prepare_data(device, test_path, noise_lev, gray, crop_size)
 
 # テストデータの中から、最初のバッチを取得
 for batch in test_dataloader:
-    noisy_image = batch["noise"][4,:,:,:]  # リストから最初の要素を取得
-    original_image = batch["true"][4,:,:,:]  # リストから最初の要素を取得
+    noisy_image = batch["noise"][0,:,:,:]  # リストから最初の要素を取得
+    original_image = batch["true"][0,:,:,:]  # リストから最初の要素を取得
     break  # 1つ目のバッチだけを使用する場合
 
 
 
 
 #iteration 
-iteration_num = 50
+iteration_num = 1
 
 psnr_array = []
 
@@ -148,14 +148,14 @@ denoised_image = noisy_image.clone()  # ノイズのある画像を初期値に�
 for i in range(iteration_num):
     # PSNRを計算
     psnr_value = PSNR(denoised_image, original_image)
-    
+    print(psnr_value)
     # PSNRの値を保存
     psnr_array.append(psnr_value)
 
     # モデルでデノイジング
-    denoised_image = model.forward(denoised_image, noisy_image,0.7)
-    #denoised_image = model.forward(denoised_image, noisy_image)
-    
+    #denoised_image = model.forward(denoised_image, noisy_image,0.7)
+    denoised_image = model.forward(denoised_image, noisy_image)
+    print(PSNR(denoised_image, original_image))
     
 # print(psnr_array)
 
@@ -168,39 +168,102 @@ noisy_image = noisy_image.squeeze().cpu().numpy()
 original_image = original_image.squeeze().cpu().numpy()
 denoised_image = denoised_image.squeeze().cpu().detach().numpy()
 
+
+
+
 # print(psnr_array)
+
+
+# plt.figure(figsize=(12, 3))
+
+# plt.subplot(1, 3, 1)
+# plt.title('Original Image')
+# plt.imshow(original_image, vmin=0, vmax=1,cmap='gray' if gray else None)
+
+# plt.subplot(1, 3, 2)
+# plt.title('Noisy Image')
+# plt.imshow(noisy_image, vmin=0, vmax=1,cmap='gray' if gray else None)
+
+# plt.subplot(1, 3, 3)
+# plt.title('Denoised Image')
+# plt.imshow(denoised_image,vmin=0, vmax=1, cmap='gray' if gray else None)
+# plt.show()
+
+# # PSNRのプロットは別の図で作成
+# plt.figure()
+# plt.plot(range(iteration_num), psnr_array)
+# plt.xlabel('Iteration')
+# plt.ylabel('PSNR')
+# plt.title('PSNR over Iterations')
+# plt.show()
+
+# # PSNR差分を計算
+# psnr_diff = [abs(psnr_array[i+1] - psnr_array[i]) for i in range(len(psnr_array)-1)]
+
+# # PSNRの差分をプロット
+# plt.figure()
+# plt.semilogy(range(0, iteration_num-1), psnr_diff)  # 差分はiteration 1から開始
+# plt.xlabel('Iteration')
+# plt.ylabel('PSNR Difference')
+# plt.title('Difference in PSNR between Consecutive Iterations')
+# plt.show()
+
+
+
+
+import os
+
+
+# 保存先ディレクトリを設定
+base_dir = os.path.expanduser("~/analyzing-tied-weights-nn")
+save_dir = os.path.join(base_dir, 'img')
+os.makedirs(save_dir, exist_ok=True)
 
 
 plt.figure(figsize=(12, 3))
 
+# Original Image
 plt.subplot(1, 3, 1)
 plt.title('Original Image')
-plt.imshow(original_image, vmin=0, vmax=1,cmap='gray' if gray else None)
+plt.imshow(original_image, vmin=0, vmax=1, cmap='gray' if gray else None)
 
+# Noisy Image
 plt.subplot(1, 3, 2)
 plt.title('Noisy Image')
-plt.imshow(noisy_image, vmin=0, vmax=1,cmap='gray' if gray else None)
+plt.imshow(noisy_image, vmin=0, vmax=1, cmap='gray' if gray else None)
 
+# Denoised Image
 plt.subplot(1, 3, 3)
 plt.title('Denoised Image')
-plt.imshow(denoised_image,vmin=0, vmax=1, cmap='gray' if gray else None)
-plt.show()
+plt.imshow(denoised_image, vmin=0, vmax=1, cmap='gray' if gray else None)
 
-# PSNRのプロットは別の図で作成
-plt.figure()
-plt.plot(range(iteration_num), psnr_array)
-plt.xlabel('Iteration')
-plt.ylabel('PSNR')
-plt.title('PSNR over Iterations')
-plt.show()
+# 画像をファイルとして保存
+plt.savefig(os.path.join(save_dir, 'images_comparison.png'))
+plt.close()  # メモリ節約のためにプロットを閉じる
 
-# PSNR差分を計算
-psnr_diff = [abs(psnr_array[i+1] - psnr_array[i]) for i in range(len(psnr_array)-1)]
+# # PSNRのプロットは別の図で作成
+# plt.figure()
+# plt.plot(range(iteration_num), psnr_array)
+# plt.xlabel('Iteration')
+# plt.ylabel('PSNR')
+# plt.title('PSNR over Iterations')
 
-# PSNRの差分をプロット
-plt.figure()
-plt.semilogy(range(0, iteration_num-1), psnr_diff)  # 差分はiteration 1から開始
-plt.xlabel('Iteration')
-plt.ylabel('PSNR Difference')
-plt.title('Difference in PSNR between Consecutive Iterations')
-plt.show()
+# # PSNRグラフをファイルとして保存
+# plt.savefig(os.path.join(save_dir, 'psnr_over_iterations.png'))
+# plt.close()
+
+# # PSNR差分を計算
+# psnr_diff = [abs(psnr_array[i+1] - psnr_array[i]) for i in range(len(psnr_array)-1)]
+
+# # PSNRの差分をプロット
+# plt.figure()
+# plt.semilogy(range(0, iteration_num-1), psnr_diff)  # 差分はiteration 1から開始
+# plt.xlabel('Iteration')
+# plt.ylabel('PSNR Difference')
+# plt.title('Difference in PSNR between Consecutive Iterations')
+
+# # PSNR差分グラフをファイルとして保存
+# plt.savefig(os.path.join(save_dir, 'psnr_difference.png'))
+# plt.close()
+
+
